@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DOTNET_Core_Project.Models.Pets>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PetAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetHastalik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetYas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.turler)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetHastalik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetYas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.turler.TurAdi)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.PetNo" class="btn btn-success">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PetNo" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
